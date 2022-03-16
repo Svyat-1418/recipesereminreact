@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/recipesereminreact/static/css/main.69713d22.css",
-    "main.js": "/recipesereminreact/static/js/main.897cfab4.js",
+    "main.js": "/recipesereminreact/static/js/main.e9592ea7.js",
     "index.html": "/recipesereminreact/index.html",
     "main.69713d22.css.map": "/recipesereminreact/static/css/main.69713d22.css.map",
-    "main.897cfab4.js.map": "/recipesereminreact/static/js/main.897cfab4.js.map"
+    "main.e9592ea7.js.map": "/recipesereminreact/static/js/main.e9592ea7.js.map"
   },
   "entrypoints": [
     "static/css/main.69713d22.css",
-    "static/js/main.897cfab4.js"
+    "static/js/main.e9592ea7.js"
   ]
 }
