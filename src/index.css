@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*background-image: url("https://kartinkin.net/uploads/posts/2021-01/1611402393_7-p-temnii-fon-s-yedoi-8.jpg");*/
+}
+
+/*.background {*/
+/*    position: relative;*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+
+
+.wrapper {
+    margin: 0 20%;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/*h1, h2, h3, h4 {*/
+/*    font-size: 1rem;*/
+/*    color: rgb(56, 56, 56);*/
+/*}*/
+
+h4 {
+    font-size: 1rem;
+    color: rgb(56, 56, 56);
+}
+
+h3 {
+    font-size: 1rem;
+    color: rgb(56, 56, 56);
+    line-height: 2.5rem;
+    margin: 2rem 0;
+
+}
+
+
+a {
+    color: rgb(56,56,56);
+}
+
+
