@@ -7,6 +7,7 @@ import styled from "styled-components";
 function Recipe() {
     const [detailList, setDetailList] = useState({})
     const [activBtn, setActivBtn] = useState('ingredients')
+    const [loading, setLoading] = useState(false);
 
     const params = useParams()
 
@@ -14,9 +15,9 @@ function Recipe() {
         fetchDetails()
     }, [params.name]);
 
-/*
-пробуем оживить
-*/
+    /*
+    пробуем оживить
+    */
 // const clickBtnDone = () => {
 //     setActivBtn('instructions')
 // }
@@ -24,11 +25,11 @@ function Recipe() {
 //     setActivBtn('ingredients')
 // }
 
-    const fetchDetails = async () => {
-        try {
-            // const data = await fetch(`${BASE_URL_DETAILS}${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
-            const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=52c7740e405f4023a6159810e3895428`)
 
+    const fetchDetails = async () => {
+        setLoading(true)
+        try {
+            const data = await fetch(`${BASE_URL_DETAILS}${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`)
             const detailsData = await data.json()
 
             setDetailList(detailsData)
@@ -36,6 +37,7 @@ function Recipe() {
         } catch (error) {
             console.log('Ошибка обработки details, одного из элементов' + error)
         }
+        setLoading(false)
     }
 
 
@@ -43,7 +45,11 @@ function Recipe() {
         <DetailWrapper>
             <div>
                 <h3>{detailList.title}</h3>
-                <img src={detailList.image} alt='details'/>
+                {loading ? (
+                        <p>Loading...</p>)
+                    :
+                    <img src={detailList.image} alt='details'/>
+                }
             </div>
             <Info>
                 <Buttonleft className={activBtn === 'instructions' ? 'active' : ''}
@@ -55,17 +61,17 @@ function Recipe() {
                 {activBtn === 'instructions' && (
                     <div style={{marginTop: "20px"}}>
                         <span dangerouslySetInnerHTML={{__html: detailList.summary}}></span>
-                        <span dangerouslySetInnerHTML={{__html: detailList.instructions}}></span>
+                        <span dangerouslySetInnerHTML={{__html: detailList.instructions}}></span>                        
                     </div>
                 )}
                 {activBtn === 'ingredients' && (
-                        <ul>
-                            {
-                                detailList.extendedIngredients?.map(e => (
-                                    <li key={e.id}>{e.original}</li>
-                                ))}
-                        </ul>
-                    )}
+                    <ul>
+                        {
+                            detailList.extendedIngredients?.map(e => (
+                                <li key={e.id}>{e.original}</li>
+                            ))}
+                    </ul>
+                )}
             </Info>
         </DetailWrapper>
     )
@@ -89,15 +95,18 @@ const DetailWrapper = styled.div`
     font-size: 1.2rem;
     margin-bottom: 2rem;
     line-height: 30px;
+    color: white
   }
 
   li {
     font-size: 1.2rem;
     line-height: 2.0rem;
+    color: white
   }
 
   ul {
     margin-top: 2rem;
+
   }
 
   img {

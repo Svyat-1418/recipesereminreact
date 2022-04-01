@@ -3,8 +3,7 @@ import {motion} from "framer-motion";
 import styled from "styled-components";
 import {Link, useParams} from 'react-router-dom'
 import {requests} from "../api/requests";
-
-
+import {Splide, SplideSlide} from "@splidejs/react-splide";
 
 function Cuisine() {
     const [cuisine, setCuisine] = useState([]);
@@ -18,8 +17,7 @@ function Cuisine() {
 
     const getCuisine = async (name) => {
         try {
-            // const data = await fetch(`${requests.fetchSearch}&cuisine=${name}`)
-            const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=52c7740e405f4023a6159810e3895428&cuisine=${name}`)
+            const data = await fetch(`${requests.fetchSearch}&cuisine=${name}`)
             const recipes = await data.json()
 
             setCuisine(recipes.results)
@@ -31,25 +29,39 @@ function Cuisine() {
     }
 
     return (
-        <Grid
-        animate={{opacity: 1}}
-        initial={{opacity: 0}}
-        exit={{opacity: 0}}
-        transition={{duration: 0.5}}
-        >
-            {
-                cuisine?.map(e => (
-                    <Card key={e.id}>
-                        <Link to={'/recipe/' + e.id}>
-                            <img src={e.image} alt={e.title}/>
-                            <h4>{e.name}</h4>
-                        </Link>
-                    </Card>
 
-                ))
-            }
+        <Grid
+            animate={{opacity: 1}}
+            initial={{opacity: 0}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.5}}>
+            <Wrapper>
+                <Splide options={{
+                    perPage: 4,
+                    arrows: true,
+                    pagination: true,
+                    drag: "free",
+                    gap: "7rem",
+                    rewind: true,
+                }}
+                >
+                    {
+                        cuisine.map(e => (
+                            <SplideSlide key={e.id}>
+                                <Card>
+                                    <Link to={'/recipe/' + e.id}>
+                                        <p>{e.title}</p>
+                                        <img src={e.image} alt={e.title}/>
+                                    </Link>
+                                    <h4>{e.name}</h4>
+                                </Card>
+                            </SplideSlide>
+                        ))
+                    }
+                </Splide>
+            </Wrapper>
         </Grid>
-    );
+    )
 }
 
 export default Cuisine;
@@ -62,19 +74,45 @@ const Grid = styled(motion.div)`
 `
 
 const Card = styled.div`
+  position: relative;
   img {
-    border-radius: 2rem;
-    width: 100%;
-
-    a {
-      text-decoration: none;
-    }
-
-    h4 {
-      text-align: center;
-      padding: 1rem;
-    }
-
+    min-height: 15rem;
+    border-radius: 10px;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+    padding-right: 55px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  h4 {
+    text-align: center;
+    padding: 1rem;
+  }
+  p {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+`
+
+const Wrapper = styled.div`
+  margin: 2rem 0;
+  //max-width: 1200px;
 `

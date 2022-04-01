@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {requests} from "../api/requests";
 import {Link, useParams} from "react-router-dom";
 import styled from "styled-components";
+import {Splide, SplideSlide} from "@splidejs/react-splide";
 
 
 function Searched(props) {
@@ -11,9 +12,7 @@ function Searched(props) {
 
     const getSearched = async (name) => {
         try {
-            // const data = await fetch(`${requests.fetchSearch}&query=${name}`)
-            const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=52c7740e405f4023a6159810e3895428&query=${name}`)
-
+            const data = await fetch(`${requests.fetchSearch}&query=${name}`)
             const recipes = await data.json()
 
             setSearched(recipes.results)
@@ -31,17 +30,29 @@ function Searched(props) {
 
     return (
         <Grid>
-            {searched.map(e => {
-                return (
-                    <Card key={e.id}>
-                        <Link to={'/recipe/' + e.id}>
-                            <img src={e.image} alt={e.title}/>
-                            <h4>{e.title}</h4>
-                        </Link>
-                    </Card>
-
-                )
-            })}
+            <Wrapper>
+                <Splide options={{
+                    perPage: 4,
+                    arrows: true,
+                    pagination: true,
+                    drag: "free",
+                    gap: "7rem",
+                    rewind: true,
+                }}>
+                    {searched.map(e => {
+                        return (
+                            <SplideSlide key={e.id}>
+                                <Card>
+                                    <Link to={'/recipe/' + e.id}>
+                                        <p>{e.title}</p>
+                                        <img src={e.image} alt={e.title}/>
+                                    </Link>
+                                </Card>
+                            </SplideSlide>
+                        )
+                    })}
+                </Splide>
+            </Wrapper>
         </Grid>
     )
 }
@@ -56,25 +67,45 @@ const Grid = styled.div`
 `
 
 const Card = styled.div`
+  position: relative;
+
   img {
-    border-radius: 2rem;
+    min-height: 15rem;
+    border-radius: 10px;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+    padding-right: 55px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h4 {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  p {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    color: white;
     width: 100%;
-
-    a {
-      text-decoration: none;
-    }
-
-    h4 {
-      text-align: center;
-      padding: 1rem;
-    }
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
-
-
-
-
-
-
-
+const Wrapper = styled.div`
+  margin: 2rem 0;
+`

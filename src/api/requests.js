@@ -9,4 +9,3 @@ export const requests = {
     fetchSearch: `${BASE_URL_SEARCH}=${process.env.REACT_APP_API_KEY}`,
     // fetchDetails: `${BASE_URL_DETAILS}${process.env.REACT_APP_API_KEY}`
 }
-// 52c7740e405f4023a6159810e3895428

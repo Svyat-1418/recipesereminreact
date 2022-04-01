@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
+    color: wheat;
 
 }
 
@@ -12,17 +13,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /*background-image: url("https://kartinkin.net/uploads/posts/2021-01/1611402393_7-p-temnii-fon-s-yedoi-8.jpg");*/
 }
-
-/*.background {*/
-/*    position: relative;*/
-/*    width: 100vw;*/
-/*    height: 100vh;*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*}*/
 
 
 .wrapper {
@@ -35,19 +26,14 @@ code {
 }
 
 
-/*h1, h2, h3, h4 {*/
-/*    font-size: 1rem;*/
-/*    color: rgb(56, 56, 56);*/
-/*}*/
-
 h4 {
     font-size: 1rem;
-    color: rgb(56, 56, 56);
+    color: white
 }
 
 h3 {
     font-size: 1rem;
-    color: rgb(56, 56, 56);
+    color: white;
     line-height: 2.5rem;
     margin: 2rem 0;
 
@@ -55,7 +41,55 @@ h3 {
 
 
 a {
-    color: rgb(56,56,56);
+    color: white;
 }
 
+.splide__pagination {
+    top: 215px !important;
+    bottom: 0.5em;
+    left: 0;
+    padding: 0 1em;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
 
+.splide__pagination__page {
+    margin-top: 30px !important;
+    background: white !important;
+    border: 0;
+    border-radius: 50%;
+    display: inline-block;
+    height: 13px !important;
+    padding: 0;
+    transition: transform .2s linear;
+    width: 13px !important;
+}
+
+.splide__pagination__page.is-active {
+    background: #4d44d9 !important;
+    opacity: 1 !important;
+}
+
+.video {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    object-fit: cover;
+
+}
+
+.video_intro {
+    margin: 0 auto;
+    opacity: 0.9;
+    position: absolute
+}
+
+.splide__arrow {
+    margin: 0 -50px 0 -50px !important;
+}
+
+.splide__arrow--prev {
+    margin: 0 -50px 0 -50px !important;
+}
