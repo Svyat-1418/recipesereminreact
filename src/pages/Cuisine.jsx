@@ -47,15 +47,17 @@ function Cuisine() {
                 >
                     {
                         cuisine.map(e => (
-                            <SplideSlide key={e.id}>
-                                <Card>
-                                    <Link to={'/recipe/' + e.id}>
-                                        <p>{e.title}</p>
-                                        <img src={e.image} alt={e.title}/>
-                                    </Link>
-                                    <h4>{e.name}</h4>
-                                </Card>
-                            </SplideSlide>
+                            <div key={e.id}>
+                                <SplideSlide >
+                                    <Card>
+                                        <Link to={'/recipe/' + e.id}>
+                                            <p>{e.title}</p>
+                                            <img src={e.image} alt={e.title}/>
+                                        </Link>
+                                        <h4>{e.name}</h4>
+                                    </Card>
+                                </SplideSlide>
+                            </div>
                         ))
                     }
                 </Splide>
@@ -75,6 +77,7 @@ const Grid = styled(motion.div)`
 
 const Card = styled.div`
   position: relative;
+
   img {
     min-height: 15rem;
     border-radius: 10px;
@@ -93,6 +96,7 @@ const Card = styled.div`
     text-align: center;
     padding: 1rem;
   }
+
   p {
     position: absolute;
     z-index: 10;

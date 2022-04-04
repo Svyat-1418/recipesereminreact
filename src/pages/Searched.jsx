@@ -41,14 +41,16 @@ function Searched(props) {
                 }}>
                     {searched.map(e => {
                         return (
-                            <SplideSlide key={e.id}>
-                                <Card>
-                                    <Link to={'/recipe/' + e.id}>
-                                        <p>{e.title}</p>
-                                        <img src={e.image} alt={e.title}/>
-                                    </Link>
-                                </Card>
-                            </SplideSlide>
+                            <div key={e.id}>
+                                <SplideSlide>
+                                    <Card>
+                                        <Link to={'/recipe/' + e.id}>
+                                            <p>{e.title}</p>
+                                            <img src={e.image} alt={e.title}/>
+                                        </Link>
+                                    </Card>
+                                </SplideSlide>
+                            </div>
                         )
                     })}
                 </Splide>

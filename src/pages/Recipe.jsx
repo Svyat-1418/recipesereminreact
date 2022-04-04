@@ -61,7 +61,7 @@ function Recipe() {
                 {activBtn === 'instructions' && (
                     <div style={{marginTop: "20px"}}>
                         <span dangerouslySetInnerHTML={{__html: detailList.summary}}></span>
-                        <span dangerouslySetInnerHTML={{__html: detailList.instructions}}></span>                        
+                        <span dangerouslySetInnerHTML={{__html: detailList.instructions}}></span>
                     </div>
                 )}
                 {activBtn === 'ingredients' && (

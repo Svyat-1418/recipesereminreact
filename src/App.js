@@ -12,15 +12,15 @@ function App() {
     return (
         <>
             <Intro>
-            <Main>
-                <video className='video'
-                    controls autoPlay loop muted>
-                    <source className='video_intro'
-                        src={myVideo} type="video/mp4"/>
-                </video>
-                <Intro_content>
+                <Main>
+                    <video className='video'
+                           controls autoPlay loop muted>
+                        <source className='video_intro'
+                                src={myVideo} type="video/mp4"/>
+                    </video>
+                    <Intro_content>
 
-                        <Nav >
+                        <Nav>
                             <GiKnifeFork/>
                             <Logo to={'/'}>Меню</Logo>
                         </Nav>
@@ -30,9 +30,9 @@ function App() {
                             <Pages/>
                         </div>
 
-                </Intro_content>
-            </Main>
-        </Intro>
+                    </Intro_content>
+                </Main>
+            </Intro>
         </>
     );
 }
@@ -55,7 +55,7 @@ const Nav = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  
+
   width: 100%;
   height: 100%;
   top: 0;
@@ -77,7 +77,7 @@ const Intro = styled.div`
   ::after {
     content: '';
     display: block;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
 
